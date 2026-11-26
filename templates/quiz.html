@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Assessment Quiz: {{ course.title }}</h2>
+<form action="{{ url_for('quiz', course_id=course.id) }}" method="POST" style="margin-top: 1.5rem;">
+    {% for q in questions %}
+        <div style="margin-bottom: 1.5rem; background: #f9f9f9; padding: 1rem; border-radius: 4px;">
+            <p><strong>Q{{ loop.index }}: {{ q.question }}</strong></p>
+            <div class="quiz-option">
+                <input type="radio" id="q{{ q.id }}_a" name="q_{{ q.id }}" value="A" required>
+                <label for="q{{ q.id }}_a">A) {{ q.option_a }}</label>
+            </div>
+            <div class="quiz-option">
+                <input type="radio" id="q{{ q.id }}_b" name="q_{{ q.id }}" value="B">
+                <label for="q{{ q.id }}_b">B) {{ q.option_b }}</label>
+            </div>
+            <div class="quiz-option">
+                <input type="radio" id="q{{ q.id }}_c" name="q_{{ q.id }}" value="C">
+                <label for="q{{ q.id }}_c">C) {{ q.option_c }}</label>
+            </div>
+            <div class="quiz-option">
+                <input type="radio" id="q{{ q.id }}_d" name="q_{{ q.id }}" value="D">
+                <label for="q{{ q.id }}_d">D) {{ q.option_d }}</label>
+            </div>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Submit Quiz</button>
+</form>
+{% endblock %}

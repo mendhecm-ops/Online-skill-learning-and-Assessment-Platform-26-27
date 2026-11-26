@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; padding: 2rem 0;">
+    <h2>Quiz Results: {{ course.title }}</h2>
+    <div style="margin: 2rem 0;">
+        <p style="font-size: 1.5rem;">Your Score:</p>
+        <h1 style="font-size: 3rem; color: #2ecc71;">{{ score }} / {{ total }}</h1>
+    </div>
+    <a href="{{ url_for('courses') }}" class="btn">Back to Courses</a>
+</div>
+{% endblock %}
